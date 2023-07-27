@@ -1,7 +1,6 @@
 # expo-config-plugin-ios-share-extension
 
-This extension allows you to easily add your applications icon to the iOS share sheet of other applications like Safari.
-It wil handle (nearly) all the for you, like registering the iOS Share Extension and enables Deep Linking.
+An Expo config plugin to auto-configure `iOS Share Extension`
 
 ## Installation
 
@@ -11,42 +10,17 @@ Install it in your project:
 expo install expo-config-plugin-ios-share-extension
 ```
 
-In your app’s Expo config (app.json, or app.config.js), make sure that `expo-config-plugin-ios-share-extension` has been added to the list of plugins. Under scheme, define your apps scheme.
+In your app’s Expo config (app.json, or app.config.js), make sure that `expo-config-plugin-ios-share-extension` has been added to the list of plugins.
 
 ```app.json
 "expo": {
   "name": "my-app",
-  "scheme": "myapp",
+  "scheme": "tt",
   "plugins": [
       ["expo-config-plugin-ios-share-extension"]
   ]
 }
 ```
-
-### Package version incompatibility
-Currently there is a bug in the package `xcode` this library depends on. For now a workaround is needed, where the `xcode` package get's patched automatically.
-
-- Run §npm install --save-dev package-patch§
-- Copy this repo's patch folder to the root of the project
-- Add `"postinstall": "patch-package"` to the scripts section in package.json.
-
-## Usage
-To determine which URL was passed to your application, you can read the app open url.
-
-```
-import { useURL } from "expo-linking";
-import { Text } from 'react-native';
-
-export default function App() {
-  const url = useURL();
-
-  return <Text>URL: {url}</Text>;
-}
-```
-
-The format of the url is: `[schema]://share/?url=[shared url]`
-
-## Building
 
 Next, rebuild your app.
 
